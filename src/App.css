@@ -14,15 +14,15 @@
 .icon-container {
   border: #000000 2px;
   margin: 15px 0px;
-  width: 300px;
+  width: 260px;
   height: 100px;
   float: left;
 }
 
 .button-container {
   float: left;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 .icon-count {
