@@ -1,19 +1,32 @@
 import React from 'react';
 import './App.css';
 const localStorageKey = 'mars-icons';
+const initValues = {
+  earth: 0,
+  jovian: 0,
+  science: 0,
+  space: 0,
+  building: 0,
+  event: 0,
+  city: 0,
+  energy: 0,
+  animal: 0,
+  leaf: 0,
+  microbe: 0,
+  questionMark: 0
+};
 
 class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.isLocalStorageSupported =
 			localStorage && typeof localStorage.setItem === 'function' && typeof localStorage.getItem === 'function';
-		this.state = {};
-		this.resetValues();
+		this.state = Object.assign({}, initValues);
 
     if (this.isLocalStorageSupported) {
       const values = localStorage.getItem(localStorageKey);
       if (values) {
-        this.state = JSON.parse(values);
+        this.state = Object.assign({}, initValues, JSON.parse(values));
       }
     }
 	}
@@ -25,19 +38,7 @@ class App extends React.Component {
 	}
 
   resetValues() {
-    this.setState({
-      earth: 0,
-      jovian: 0,
-      science: 0,
-      space: 0,
-      building: 0,
-      event: 0,
-      city: 0,
-      energy: 0,
-      animal: 0,
-      leaf: 0,
-      microbe: 0
-    }, this.storeStates);
+    this.setState(Object.assign({}, initValues), this.storeStates);
   }
 
 
@@ -56,7 +57,7 @@ class App extends React.Component {
                   </button>
                 </div>
                 <div className="icon" style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}>
-								<span class="icon-count">
+								<span className="icon-count">
 									{this.state[key]}
 								</span>
                 </div>
