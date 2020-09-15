@@ -61,11 +61,13 @@ class App extends React.Component {
 									  {this.state[key]}
 								  </div>
                 </div>
-                <div className="icon-count-extra-container">
-                  <div className="icon-count-extra">
-									  {this.state[key] + this.state.questionMark}
-								  </div>
-                </div>
+                {key !== "questionMark" &&
+                  <div className="icon-count-extra-container">
+                    <div className="icon-count-extra">
+  									  {this.state[key] + this.state.questionMark}
+  								  </div>
+                  </div>
+                }
               </div>)
           })}
         </div>

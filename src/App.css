@@ -15,6 +15,7 @@
   height: 100px;
   margin-right: 10px;
   margin-bottom: 10px;
+  position: relative;
 }
 
 .icon {
@@ -34,7 +35,7 @@
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px;
-  position: relative;
+  position: absolute;
   top: 10px;
   left: 60px;
 }
@@ -44,7 +45,6 @@
   font-size: 20px;
   line-height: 30px;
   font-weight: bold;
-  position: relative;
 }
 
 .icon-count-extra-container {
@@ -54,9 +54,9 @@
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
-  position: relative;
-  top: -30px;
-  left: 75px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 
 .icon-count-extra {
@@ -64,7 +64,6 @@
   font-size: 10px;
   line-height: 20px;
   font-weight: bold;
-  position: relative;
 }
 
 .btnMinus {
