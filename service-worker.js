@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/terraforming-mars-icon-tracker/precache-manifest.266e2f3c4a664dc2391083f83120b986.js"
+  "/terraforming-mars-icon-tracker/precache-manifest.84432018e23cf72551ea22367455a31e.js"
 );
 
 self.addEventListener('message', (event) => {

@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/terraforming-mars-icon-tracker/static/css/main.58d398a9.chunk.css",
-    "main.js": "/terraforming-mars-icon-tracker/static/js/main.3e51cc4b.chunk.js",
-    "main.js.map": "/terraforming-mars-icon-tracker/static/js/main.3e51cc4b.chunk.js.map",
+    "main.css": "/terraforming-mars-icon-tracker/static/css/main.3ea7c4a1.chunk.css",
+    "main.js": "/terraforming-mars-icon-tracker/static/js/main.bbeabd54.chunk.js",
+    "main.js.map": "/terraforming-mars-icon-tracker/static/js/main.bbeabd54.chunk.js.map",
     "runtime-main.js": "/terraforming-mars-icon-tracker/static/js/runtime-main.630a9d2d.js",
     "runtime-main.js.map": "/terraforming-mars-icon-tracker/static/js/runtime-main.630a9d2d.js.map",
     "static/js/2.df686d16.chunk.js": "/terraforming-mars-icon-tracker/static/js/2.df686d16.chunk.js",
     "static/js/2.df686d16.chunk.js.map": "/terraforming-mars-icon-tracker/static/js/2.df686d16.chunk.js.map",
     "index.html": "/terraforming-mars-icon-tracker/index.html",
-    "precache-manifest.266e2f3c4a664dc2391083f83120b986.js": "/terraforming-mars-icon-tracker/precache-manifest.266e2f3c4a664dc2391083f83120b986.js",
+    "precache-manifest.84432018e23cf72551ea22367455a31e.js": "/terraforming-mars-icon-tracker/precache-manifest.84432018e23cf72551ea22367455a31e.js",
     "service-worker.js": "/terraforming-mars-icon-tracker/service-worker.js",
-    "static/css/main.58d398a9.chunk.css.map": "/terraforming-mars-icon-tracker/static/css/main.58d398a9.chunk.css.map",
+    "static/css/main.3ea7c4a1.chunk.css.map": "/terraforming-mars-icon-tracker/static/css/main.3ea7c4a1.chunk.css.map",
     "static/js/2.df686d16.chunk.js.LICENSE.txt": "/terraforming-mars-icon-tracker/static/js/2.df686d16.chunk.js.LICENSE.txt",
     "static/media/animal.png": "/terraforming-mars-icon-tracker/static/media/animal.db449f30.png",
     "static/media/building.png": "/terraforming-mars-icon-tracker/static/media/building.3658288f.png",
@@ -28,7 +28,7 @@
   "entrypoints": [
     "static/js/runtime-main.630a9d2d.js",
     "static/js/2.df686d16.chunk.js",
-    "static/css/main.58d398a9.chunk.css",
-    "static/js/main.3e51cc4b.chunk.js"
+    "static/css/main.3ea7c4a1.chunk.css",
+    "static/js/main.bbeabd54.chunk.js"
   ]
 }
