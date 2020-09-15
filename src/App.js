@@ -41,8 +41,8 @@ class App extends React.Component {
     this.setState(Object.assign({}, initValues), this.storeStates);
   }
 
-
 	render() {
+    const questionCount = Object.keys(this.state).questionMark;
 		return (
 			<div className="App">
         <div className="icons">
@@ -57,9 +57,14 @@ class App extends React.Component {
                   }}/>
                 <div className="icon" style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}/>
                 <div className="icon-count-container">
-								<div className="icon-count">
-									{this.state[key]}
-								</div>
+                  <div className="icon-count">
+									  {this.state[key]}
+								  </div>
+                </div>
+                <div className="icon-count-extra-container">
+                  <div className="icon-count-extra">
+									  {this.state[key] + this.state.questionMark}
+								  </div>
                 </div>
               </div>)
           })}

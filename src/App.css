@@ -8,31 +8,23 @@
   width: 100%;
 }
 
-.icon {
+.icon-container {
+  display: inline-block;
+  border: #000000 2px;
   width: 100px;
   height: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
   margin: 10px;
   background-size: cover;
   background-repeat: no-repeat;
   position: absolute;
   pointer-events: none;
-}
-
-.icon-container {
-  display: inline-block;
-  border: #000000 2px;
-  width: 120px;
-  height: 120px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.icon-count {
-  color: black;
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: bold;
-  position: relative;
 }
 
 .icon-count-container {
@@ -43,18 +35,46 @@
   -moz-border-radius: 15px;
   border-radius: 15px;
   position: relative;
-  top: 5px;
-  left: 80px;
+  top: 10px;
+  left: 60px;
+}
+
+.icon-count {
+  color: black;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: bold;
+  position: relative;
+}
+
+.icon-count-extra-container {
+  background: yellow;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: relative;
+  top: -30px;
+  left: 75px;
+}
+
+.icon-count-extra {
+  color: black;
+  font-size: 10px;
+  line-height: 20px;
+  font-weight: bold;
+  position: relative;
 }
 
 .btnMinus {
   background-color: red;
   border: none;
   color: black;
-  width: 60px;
-  margin-left: -60px;
-  height: 120px;
-  opacity: .15;
+  width: 50px;
+  margin-left: -50px;
+  height: 100px;
+  opacity: .05;
   cursor: pointer;
   position: absolute;
 }
@@ -63,9 +83,9 @@
   background-color: green;
   border: none;
   color: black;
-  width: 60px;
-  height: 120px;
-  opacity: .15;
+  width: 50px;
+  height: 100px;
+  opacity: .05;
   cursor: pointer;
   position: absolute;
 }
