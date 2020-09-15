@@ -49,24 +49,17 @@ class App extends React.Component {
           {Object.keys(this.state).map(key => {
             return (
               <div className="icon-container" key={key}>
-                <div className="button-container">
-                  <button className="btn" onClick={() => {
+                <button className="btnMinus" onClick={() => {
                     if (this.state[key] > 0) this.setState({ [key]: this.state[key] - 1 }, this.storeStates);
-                  }}>
-                    <i className="fa fa-minus-circle"/>
-                  </button>
-                </div>
-                <div className="icon" style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}>
-								<span className="icon-count">
-									{this.state[key]}
-								</span>
-                </div>
-                <div className="button-container">
-                  <button className="btn" onClick={() => {
+                  }}/>
+                <button className="btnPlus" onClick={() => {
                     this.setState({ [key]: this.state[key] + 1 }, this.storeStates);
-                  }}>
-                    <i className="fa fa-plus-circle"/>
-                  </button>
+                  }}/>
+                <div className="icon" style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}/>
+                <div className="icon-count-container">
+								<div className="icon-count">
+									{this.state[key]}
+								</div>
                 </div>
               </div>)
           })}
