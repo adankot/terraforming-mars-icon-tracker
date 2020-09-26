@@ -1,6 +1,12 @@
 .App {
   text-align: center;
   width: 100vw;
+  height: 100vh;
+  overflow-y: auto;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 15px;
 }
 
 .icons {
@@ -73,9 +79,11 @@
   width: 50px;
   margin-left: -50px;
   height: 100px;
-  opacity: .05;
+  opacity: 50%;
   cursor: pointer;
   position: absolute;
+  border-bottom-left-radius: 50px;
+  border-top-left-radius: 50px;
 }
 
 .btnPlus {
@@ -84,9 +92,11 @@
   color: black;
   width: 50px;
   height: 100px;
-  opacity: .05;
+  opacity: 50%;
   cursor: pointer;
   position: absolute;
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
 }
 
 .reset-button-container{

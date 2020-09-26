@@ -4,6 +4,7 @@ const localStorageKey = 'mars-icons';
 const initValues = {
   earth: 0,
   jovian: 0,
+  venus: 0,
   science: 0,
   space: 0,
   building: 0,
@@ -32,7 +33,7 @@ class App extends React.Component {
 	}
 
 	storeStates() {
-    if(this.isLocalStorageSupported) {
+    if (this.isLocalStorageSupported) {
       localStorage.setItem(localStorageKey, JSON.stringify(this.state));
     }
 	}
@@ -42,9 +43,8 @@ class App extends React.Component {
   }
 
 	render() {
-    const questionCount = Object.keys(this.state).questionMark;
 		return (
-			<div className="App">
+			<div className="App" style={{ backgroundImage: 'url(' + require(`./img/background.jpg`) + ')' }}>
         <div className="icons">
           {Object.keys(this.state).map(key => {
             return (
@@ -61,7 +61,7 @@ class App extends React.Component {
 									  {this.state[key]}
 								  </div>
                 </div>
-                {key !== "questionMark" &&
+                {key !== "questionMark" && this.state.questionMark > 0 &&
                   <div className="icon-count-extra-container">
                     <div className="icon-count-extra">
   									  {this.state[key] + this.state.questionMark}
