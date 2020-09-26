@@ -4,6 +4,7 @@ const localStorageKey = 'mars-icons';
 const initValues = {
   earth: 0,
   jovian: 0,
+  venus: 0,
   science: 0,
   space: 0,
   building: 0,
@@ -32,7 +33,7 @@ class App extends React.Component {
 	}
 
 	storeStates() {
-    if(this.isLocalStorageSupported) {
+    if (this.isLocalStorageSupported) {
       localStorage.setItem(localStorageKey, JSON.stringify(this.state));
     }
 	}
@@ -41,33 +42,32 @@ class App extends React.Component {
     this.setState(Object.assign({}, initValues), this.storeStates);
   }
 
-
 	render() {
 		return (
-			<div className="App">
+			<div className="App" style={{ backgroundImage: 'url(' + require(`./img/background.jpg`) + ')' }}>
         <div className="icons">
           {Object.keys(this.state).map(key => {
             return (
               <div className="icon-container" key={key}>
-                <div className="button-container">
-                  <button className="btn" onClick={() => {
+                <button className="btnMinus" onClick={() => {
                     if (this.state[key] > 0) this.setState({ [key]: this.state[key] - 1 }, this.storeStates);
-                  }}>
-                    <i className="fa fa-minus-circle"/>
-                  </button>
-                </div>
-                <div className="icon" style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}>
-								<span className="icon-count">
-									{this.state[key]}
-								</span>
-                </div>
-                <div className="button-container">
-                  <button className="btn" onClick={() => {
+                  }}/>
+                <button className="btnPlus" onClick={() => {
                     this.setState({ [key]: this.state[key] + 1 }, this.storeStates);
-                  }}>
-                    <i className="fa fa-plus-circle"/>
-                  </button>
+                  }}/>
+                <div className="icon" style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}/>
+                <div className="icon-count-container">
+                  <div className="icon-count">
+									  {this.state[key]}
+								  </div>
                 </div>
+                {key !== "questionMark" && this.state.questionMark > 0 &&
+                  <div className="icon-count-extra-container">
+                    <div className="icon-count-extra">
+  									  {this.state[key] + this.state.questionMark}
+  								  </div>
+                  </div>
+                }
               </div>)
           })}
         </div>
