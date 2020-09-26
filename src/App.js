@@ -41,33 +41,33 @@ class App extends React.Component {
     this.setState(Object.assign({}, initValues), this.storeStates);
   }
 
-
 	render() {
+    const questionCount = Object.keys(this.state).questionMark;
 		return (
 			<div className="App">
         <div className="icons">
           {Object.keys(this.state).map(key => {
             return (
               <div className="icon-container" key={key}>
-                <div className="button-container">
-                  <button className="btn" onClick={() => {
+                <button className="btnMinus" onClick={() => {
                     if (this.state[key] > 0) this.setState({ [key]: this.state[key] - 1 }, this.storeStates);
-                  }}>
-                    <i className="fa fa-minus-circle"/>
-                  </button>
-                </div>
-                <div className="icon" style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}>
-								<span className="icon-count">
-									{this.state[key]}
-								</span>
-                </div>
-                <div className="button-container">
-                  <button className="btn" onClick={() => {
+                  }}/>
+                <button className="btnPlus" onClick={() => {
                     this.setState({ [key]: this.state[key] + 1 }, this.storeStates);
-                  }}>
-                    <i className="fa fa-plus-circle"/>
-                  </button>
+                  }}/>
+                <div className="icon" style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}/>
+                <div className="icon-count-container">
+                  <div className="icon-count">
+									  {this.state[key]}
+								  </div>
                 </div>
+                {key !== "questionMark" &&
+                  <div className="icon-count-extra-container">
+                    <div className="icon-count-extra">
+  									  {this.state[key] + this.state.questionMark}
+  								  </div>
+                  </div>
+                }
               </div>)
           })}
         </div>
