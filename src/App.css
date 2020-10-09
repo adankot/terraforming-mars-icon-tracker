@@ -238,6 +238,7 @@ body {
   display: inline-block;
   background-color: firebrick;
   height: 150px;
+  max-height: 30vh;
   width: 30px;
   border: 1px solid white;
   outline: none;
