@@ -112,10 +112,12 @@ class App extends React.Component {
   }
 
   newGeneration() {
-    const newResources = {}
+    const newResources = {...this.state.resources};
+    newResources.heat = newResources.power + newResources.heat;
+    newResources.power = 0;
     for (let key in this.state.productions) {
       if (this.state.productions.hasOwnProperty(key)) {
-        let sum = this.state.productions[key] + this.state.resources[key];
+        let sum = this.state.productions[key] + newResources[key];
         if (key === 'megaCredit') {
           sum += this.state.terraformRate;
         }
@@ -132,6 +134,9 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
+        <div className="generation">
+          Generation: {this.state.generation}
+        </div>
         <div className="side-buttons">
           <button type="button" onClick={() => {
             this.toggleMenu('icons');
@@ -146,7 +151,8 @@ class App extends React.Component {
 
         <div className="reset-button-container">
           <button type="button" onClick={() => {
-            this.newGeneration();
+            const isConfirmed = window.confirm('Are you sure you want to do the production phase?');
+            if (isConfirmed) this.newGeneration();
           }}>New generation</button>
         </div>
         <div className="reset-button-container">
@@ -219,8 +225,8 @@ class App extends React.Component {
                     -10
                   </button>
                 </div>
-                <div className="production-icon-bg">
-                  <div className="production-icon"
+                <div className="resource-icon-wrapper">
+                  <div className="production-icon TR"
                        style={{ backgroundImage: 'url(' + require(`./img/terraformRate.png`) + ')' }}>
                     <div className="production-count">
                       {this.state.terraformRate}

@@ -16,6 +16,10 @@ body {
   text-align: center;
 }
 
+.generation {
+  padding-top: 20px;
+}
+
 .hidden {
   position: absolute;
   top: 0;
@@ -102,8 +106,8 @@ body {
   -moz-border-radius: 10px;
   border-radius: 10px;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
 }
 
 .icon-count-extra {
@@ -148,7 +152,7 @@ body {
 
 .reset-button-container > button {
   display: inline-block;
-  width: 80%;
+  width: 300px;
   font-size: 16px;
   padding: 15px;
   color: white;
@@ -190,6 +194,11 @@ body {
   text-align: right;
 }
 
+.production-icon.TR {
+  width: 95px;
+  margin-top: 10px;
+}
+
 .production-count,
 .resource-count {
   display: inline-block;
@@ -227,8 +236,8 @@ body {
 
 .side-buttons {
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 30px;
   z-index: 99999;
