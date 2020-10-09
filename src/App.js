@@ -37,7 +37,6 @@ const initValues = {
   menus: {
     icons: false,
     productions: false,
-    resources: false,
   },
   terraformRate: 20,
   generation: 0,
@@ -143,9 +142,6 @@ class App extends React.Component {
 	render() {
 		return (
 			<div className="App">
-        <div className="generation">
-          Generation: {this.state.generation}
-        </div>
         <div className="side-buttons">
           <button type="button" onClick={() => {
             this.toggleMenu('icons');
@@ -155,13 +151,8 @@ class App extends React.Component {
           }}><span>Productions</span></button>
         </div>
 
-        <div className="reset-button-container">
-          <button type="button" onClick={() => {
-            const isConfirmed = window.confirm('Are you sure you want to do the production phase?');
-            if (isConfirmed) this.newGeneration();
-          }}>New generation</button>
-        </div>
-        <div className="reset-button-container">
+        <div className={`reset-button-container 
+             ${this.state.menus.productions || this.state.menus.icons ? 'hidden': ''}`}>
           <button type="button" onClick={() => {
             const isConfirmed = window.confirm('Are you sure you want to reset the counters?');
             if (isConfirmed) this.resetValues();
@@ -171,11 +162,17 @@ class App extends React.Component {
 
         <div className={`icons hidden ${this.state.menus.icons ? "active" : ""}`}>
           <div className="hidden-wrapper">
-            <div className="close">
-              <button type="button" className="closeButton" onClick={() => {
-                this.toggleMenu('icons');
-              }}>&times;</button>
+            <div className="header">
+              <div className="generation">
+                Generation: {this.state.generation}
+              </div>
+              <div className="close">
+                <button type="button" className="closeButton" onClick={() => {
+                  this.toggleMenu('icons');
+                }}>&times;</button>
+              </div>
             </div>
+
             {Object.keys(this.state.icons).map(key => {
               return (
                 <div className="icon-container" key={key}>
@@ -202,30 +199,41 @@ class App extends React.Component {
                   }
                 </div>)
             })}
+            <div className="reset-button-container">
+              <button type="button" onClick={() => {
+                const isConfirmed = window.confirm('Are you sure you want to do the production phase?');
+                if (isConfirmed) this.newGeneration();
+              }}>New generation</button>
+            </div>
           </div>
         </div>
 
         <div className={`productions hidden ${this.state.menus.productions ? "active" : ""}`}>
           <div className="hidden-wrapper">
-            <div className="close">
-              <button type="button" className="closeButton" onClick={() => {
-                this.toggleMenu('productions');
-              }}>&times;</button>
+            <div className="header">
+              <div className="generation">
+                Generation: {this.state.generation}
+              </div>
+              <div className="close">
+                <button type="button" className="closeButton" onClick={() => {
+                  this.toggleMenu('productions');
+                }}>&times;</button>
+              </div>
             </div>
             <div className="table-container">
               <div className="production-wrapper">
                 <div className="buttons-wrapper">
-                  <button className="add a-1" onClick={() => {
+                  <button className="add copper" onClick={() => {
                     this.addTerraformRate(-1);
                   }}>
                     -1
                   </button>
-                  <button className="add a-5" onClick={() => {
+                  <button className="add silver" onClick={() => {
                     this.addTerraformRate(-5);
                   }}>
                     -5
                   </button>
-                  <button className="add a-10" onClick={() => {
+                  <button className="add gold" onClick={() => {
                     this.addTerraformRate(-10);
                   }}>
                     -10
@@ -234,23 +242,23 @@ class App extends React.Component {
                 <div className="resource-icon-wrapper">
                   <div className="production-icon TR"
                        style={{ backgroundImage: 'url(' + require(`./img/terraformRate.png`) + ')' }}>
-                    <div className="production-count">
+                    <div className="tr-count">
                       {this.state.terraformRate}
                     </div>
                   </div>
                 </div>
                 <div className="buttons-wrapper">
-                  <button className="add a-1" onClick={() => {
+                  <button className="add copper" onClick={() => {
                     this.addTerraformRate(1);
                   }}>
                     +1
                   </button>
-                  <button className="add a-5" onClick={() => {
+                  <button className="add silver" onClick={() => {
                     this.addTerraformRate(5);
                   }}>
                     +5
                   </button>
-                  <button className="add a-10" onClick={() => {
+                  <button className="add gold" onClick={() => {
                     this.addTerraformRate(10);
                   }}>
                     +10
@@ -263,17 +271,17 @@ class App extends React.Component {
                 <div className="table-container" key={key}>
                   <div className="production-wrapper">
                     <div className="buttons-wrapper">
-                      <button className="add" onClick={() => {
+                      <button className="add copper" onClick={() => {
                         this.add(this.state.selectedType, key, -1);
                       }}>
                         -1
                       </button>
-                      <button className="add" onClick={() => {
+                      <button className="add silver" onClick={() => {
                         this.add(this.state.selectedType, key, -5);
                       }}>
                         -5
                       </button>
-                      <button className="add" onClick={() => {
+                      <button className="add gold" onClick={() => {
                         this.add(this.state.selectedType, key, -10);
                       }}>
                         -10
@@ -302,17 +310,17 @@ class App extends React.Component {
                       </div>
                     </div>
                     <div className="buttons-wrapper">
-                      <button className="add" onClick={() => {
+                      <button className="add copper" onClick={() => {
                         this.add(this.state.selectedType, key, 1);
                       }}>
                         +1
                       </button>
-                      <button className="add" onClick={() => {
+                      <button className="add silver" onClick={() => {
                         this.add(this.state.selectedType, key, 5);
                       }}>
                         +5
                       </button>
-                      <button className="add" onClick={() => {
+                      <button className="add gold" onClick={() => {
                         this.add(this.state.selectedType, key, 10);
                       }}>
                         +10
@@ -322,6 +330,12 @@ class App extends React.Component {
                 </div>
               )
             })}
+            <div className="reset-button-container">
+              <button type="button" onClick={() => {
+                const isConfirmed = window.confirm('Are you sure you want to do the production phase?');
+                if (isConfirmed) this.newGeneration();
+              }}>New generation</button>
+            </div>
           </div>
         </div>
 

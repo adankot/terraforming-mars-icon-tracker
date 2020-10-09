@@ -17,7 +17,8 @@ body {
 }
 
 .generation {
-  padding-top: 20px;
+  display: inline-block;
+  padding: 10px;
 }
 
 .hidden {
@@ -35,12 +36,19 @@ body {
   left: 0;
 }
 .hidden-wrapper {
-  padding-left: 40px;
+  padding-left: 35px;
+}
+
+.header {
+  display: block;
+  height: 50px;
 }
 
 .close {
+  display: inline-block;
   text-align: right;
   padding: 5px;
+  float: right;
 }
 
 .close > button {
@@ -205,15 +213,17 @@ body {
   text-align: center;
   position: relative;
   background-color: white;
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
-  line-height: 30px;
+  line-height: 35px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .production-count {
   top: 18px;
-  left: -25px;
+  left: -15px;
   background-color: saddlebrown;
   color: white;
 }
@@ -221,6 +231,18 @@ body {
   top: 18px;
   left: 15px;
 }
+
+.tr-count {
+  color: white;
+  font-weight: bold;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 70px;
+  font-size: 40px;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
 
 .resource-icon {
   margin: 12px;
