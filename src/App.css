@@ -207,11 +207,19 @@ body {
   background-color: white;
   height: 30px;
   width: 30px;
-  border: 1px solid black;
   border-radius: 50%;
   line-height: 30px;
-  top: -10px;
-  right: -10px;
+}
+
+.production-count {
+  top: 18px;
+  left: -25px;
+  background-color: saddlebrown;
+  color: white;
+}
+.resource-count {
+  top: 18px;
+  left: 15px;
 }
 
 .resource-icon {

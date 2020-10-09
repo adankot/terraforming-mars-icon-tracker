@@ -41,6 +41,7 @@ const initValues = {
   },
   terraformRate: 20,
   generation: 0,
+  selectedType: 'productions'
 };
 
 class App extends React.Component {
@@ -96,18 +97,26 @@ class App extends React.Component {
     }
   }
 
-  addTerraformRate(value) {
-    const sum = this.state.terraformRate + value;
-    if (sum >= 0) {
-      this.setState({ terraformRate: sum }, this.storeStates);
-    }
-  }
-
   addResource(key, value) {
     const sum = this.state.resources[key] + value;
     if (sum >= 0) {
       const newState = { ...this.state.resources, [key]: sum }
       this.setState({ resources: newState }, this.storeStates);
+    }
+  }
+
+  add(type, key, value) {
+    if (type === 'productions') {
+      this.addProduction(key, value);
+    } else if (type === 'resources') {
+      this.addResource(key, value);
+    }
+  }
+
+  addTerraformRate(value) {
+    const sum = this.state.terraformRate + value;
+    if (sum >= 0) {
+      this.setState({ terraformRate: sum }, this.storeStates);
     }
   }
 
@@ -144,9 +153,6 @@ class App extends React.Component {
           <button type="button" onClick={() => {
             this.toggleMenu('productions');
           }}><span>Productions</span></button>
-          <button type="button" onClick={() => {
-            this.toggleMenu('resources');
-          }}><span>Resources</span></button>
         </div>
 
         <div className="reset-button-container">
@@ -258,102 +264,56 @@ class App extends React.Component {
                   <div className="production-wrapper">
                     <div className="buttons-wrapper">
                       <button className="add" onClick={() => {
-                        this.addProduction(key, -1);
+                        this.add(this.state.selectedType, key, -1);
                       }}>
                         -1
                       </button>
                       <button className="add" onClick={() => {
-                        this.addProduction(key, -5);
+                        this.add(this.state.selectedType, key, -5);
                       }}>
                         -5
                       </button>
                       <button className="add" onClick={() => {
-                        this.addProduction(key, -10);
+                        this.add(this.state.selectedType, key, -10);
                       }}>
                         -10
                       </button>
                     </div>
-                    <div className="production-icon-bg">
-                      <div className="production-icon"
+                    <div className={`
+                      ${this.state.selectedType === 'productions' ? 'production-icon-bg' : ''}
+                      ${this.state.selectedType === 'resources' ? 'resource-icon-wrapper' : ''}
+                    `}>
+                      <div className={`production-icon ${this.state.selectedType === 'resources' ? 'resource-icon' : ''}`}
                            style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}>
-                        <div className="production-count">
+                        <div className="production-count" onClick={() => {
+                          this.setState({
+                            selectedType: 'productions'
+                          }, this.storeStates);
+                        }}>
                           {this.state.productions[key]}
                         </div>
-                      </div>
-                    </div>
-                    <div className="buttons-wrapper">
-                      <button className="add" onClick={() => {
-                        this.addProduction(key, 1);
-                      }}>
-                        +1
-                      </button>
-                      <button className="add" onClick={() => {
-                        this.addProduction(key, 5);
-                      }}>
-                        +5
-                      </button>
-                      <button className="add" onClick={() => {
-                        this.addProduction(key, 10);
-                      }}>
-                        +10
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-
-
-        <div className={`resource hidden ${this.state.menus.resources ? "active" : ""}`}>
-          <div className="hidden-wrapper">
-            <div className="close">
-              <button type="button" className="closeButton" onClick={() => {
-                this.toggleMenu('resources');
-              }}>&times;</button>
-            </div>
-            {Object.keys(this.state.resources).map(key => {
-              return (
-                <div className="table-container" key={key}>
-                  <div className="resource-wrapper">
-                    <div className="buttons-wrapper">
-                      <button className="add" onClick={() => {
-                        this.addResource(key, -1);
-                      }}>
-                        -1
-                      </button>
-                      <button className="add" onClick={() => {
-                        this.addResource(key, -5);
-                      }}>
-                        -5
-                      </button>
-                      <button className="add" onClick={() => {
-                        this.addResource(key, -10);
-                      }}>
-                        -10
-                      </button>
-                    </div>
-                    <div className="resource-icon-wrapper">
-                      <div className="resource-icon" style={{ backgroundImage: 'url(' + require(`./img/${key}.png`) + ')' }}>
-                        <div className="resource-count">
+                        <div className="resource-count" onClick={() => {
+                          this.setState({
+                            selectedType: 'resources'
+                          }, this.storeStates);
+                        }}>
                           {this.state.resources[key]}
                         </div>
                       </div>
                     </div>
                     <div className="buttons-wrapper">
                       <button className="add" onClick={() => {
-                        this.addResource(key, 1);
+                        this.add(this.state.selectedType, key, 1);
                       }}>
                         +1
                       </button>
                       <button className="add" onClick={() => {
-                        this.addResource(key, 5);
+                        this.add(this.state.selectedType, key, 5);
                       }}>
                         +5
                       </button>
                       <button className="add" onClick={() => {
-                        this.addResource(key, 10);
+                        this.add(this.state.selectedType, key, 10);
                       }}>
                         +10
                       </button>
@@ -364,6 +324,7 @@ class App extends React.Component {
             })}
           </div>
         </div>
+
 			</div>
 		);
 	}
