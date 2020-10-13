@@ -1,0 +1,71 @@
+.icon-wrapper {
+  padding: 15px 5px;
+  text-align: center;
+
+  .icon {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+
+    .icon-image {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin: 0;
+      vertical-align: top;
+    }
+
+    .icon-count-wrapper {
+      display: inline-block;
+      width: 45px;
+      height: 50px;
+      margin-left: 5px;
+      position: relative;
+      top: 0;
+      left: 0;
+
+      .btn {
+        display: block;
+        width: 100%;
+        height: 25px;
+        color: black;
+        //text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        line-height: 10px;
+        font-size: 10px;
+        position: absolute;
+        outline: none !important;
+        padding: 0;
+        &:focus,
+        &:active {
+          box-shadow: none !important;
+          outline: none !important;
+          color: firebrick;
+        }
+
+        &.btn-plus {
+          top: 0;
+          padding-bottom: 15px;
+        }
+
+        &.btn-minus {
+          bottom: 0;
+          padding-top: 15px;
+        }
+
+      }
+
+      .icon-count {
+        display: block;
+        height: 50px;
+        color: black;
+        //text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        line-height: 50px;
+        font-size: 20px;
+
+        .icon-question-mark {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
