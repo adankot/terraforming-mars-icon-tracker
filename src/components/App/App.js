@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Icons from '../Icons/Icons'
+import Productions from '../Productions/Productions'
 import Sidebar from '../Sidebar/Sidebar'
 const localStorageKey = 'mars-icons';
 const initValues = {
@@ -41,8 +42,7 @@ const initValues = {
     productions: false,
   },
   terraformRate: 20,
-  generation: 0,
-  selectedType: 'productions'
+  generation: 0
 };
 
 class App extends React.Component {
@@ -70,11 +70,6 @@ class App extends React.Component {
     this.setState(Object.assign({}, initValues), this.storeStates);
   }
 
-  setIcon(key, value) {
-    const newState = {...this.state.icons, [key]: value}
-    this.setState({icons: newState}, this.storeStates);
-  }
-
   closeMenu(key) {
     const newState = { ...this.state.menus, [key]: false }
     this.setState({ menus: newState }, this.storeStates);
@@ -99,58 +94,6 @@ class App extends React.Component {
     this.setState({ menus: newState }, this.storeStates);
   }
 
-  addProduction(key, value) {
-    const sum = this.state.productions[key] + value;
-    let shouldUpdate = (sum >= 0) || (key === 'megaCredit' && sum >= -5);
-    if (shouldUpdate) {
-      const newState = { ...this.state.productions, [key]: sum }
-      this.setState({ productions: newState }, this.storeStates);
-    }
-  }
-
-  addResource(key, value) {
-    const sum = this.state.resources[key] + value;
-    if (sum >= 0) {
-      const newState = { ...this.state.resources, [key]: sum }
-      this.setState({ resources: newState }, this.storeStates);
-    }
-  }
-
-  add(type, key, value) {
-    if (type === 'productions') {
-      this.addProduction(key, value);
-    } else if (type === 'resources') {
-      this.addResource(key, value);
-    }
-  }
-
-  addTerraformRate(value) {
-    const sum = this.state.terraformRate + value;
-    if (sum >= 0) {
-      this.setState({ terraformRate: sum }, this.storeStates);
-    }
-  }
-
-  newGeneration() {
-    const newResources = {...this.state.resources};
-    newResources.heat = newResources.power + newResources.heat;
-    newResources.power = 0;
-    for (let key in this.state.productions) {
-      if (this.state.productions.hasOwnProperty(key)) {
-        let sum = this.state.productions[key] + newResources[key];
-        if (key === 'megaCredit') {
-          sum += this.state.terraformRate;
-        }
-        newResources[key] = sum;
-      }
-    }
-    this.setState({
-      resources: newResources,
-      generation: this.state.generation + 1,
-      terraformRate: this.state.terraformRate - 1
-    }, this.storeStates);
-  }
-
   onChildUpdate(key, newState) {
 	  console.log(key, newState);
     this.setState({ [key]: newState }, this.storeStates);
@@ -164,9 +107,22 @@ class App extends React.Component {
         <Sidebar
           isActive={this.state.menus.icons}
           name="icons"
-          header="Icons"
+          header={`Icons - Generation: ${this.state.generation}`}
           onClose={this.closeMenu.bind(this)}
-          body={<Icons icons={this.state.icons} onUpdate={this.onChildUpdate.bind(this)}></Icons>}
+          body={<Icons icons={this.state.icons} onUpdate={this.onChildUpdate.bind(this)}/>}
+        />
+        <Sidebar
+          isActive={this.state.menus.productions}
+          name="productions"
+          header={`Productions - Generation: ${this.state.generation}`}
+          onClose={this.closeMenu.bind(this)}
+          body={<Productions
+            productions={this.state.productions}
+            resources={this.state.resources}
+            terraformRate={this.state.terraformRate}
+            generation={this.state.generation}
+            onUpdate={this.onChildUpdate.bind(this)}/>
+          }
         />
         <div className={`container-fluid app ${isSideBarOpened ? 'd-none' : ''}` }>
           <div className="row">
@@ -192,9 +148,17 @@ class App extends React.Component {
               </div>
               <div className="menu">
                 <button type="button" onClick={() => {
-                  this.toggleMenu('productions');
+                  alert('Under development');
                 }}>
                   <span>Settings</span>
+                </button>
+              </div>
+              <div className="menu">
+                <button type="button" onClick={() => {
+                  const isConfirmed = window.confirm('Are you sure you want to reset the counters?');
+                  if (isConfirmed) this.resetValues();
+                }}>
+                  <span>Reset</span>
                 </button>
               </div>
             </div>
