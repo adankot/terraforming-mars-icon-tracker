@@ -15,29 +15,26 @@ class Icons extends React.Component {
             <div className="flex-fill" key={key}>
               <div className="icon-wrapper">
                 <div className="icon">
-                  <img className="icon-image" src={require(`../../img/${key}.png`)} alt={key}/>
-                  <div className="icon-count-wrapper">
-                    <button className="btn btn-plus" onClick={() => {
-                      this.setIcon(key, this.props.icons[key] + 1);
-                    }}>
-                      <i className="fa fa-plus"></i>
-                    </button>
-                    <div className="icon-count">
-                      {this.props.icons[key]}
-                      {this.props.icons.questionMark && key !== 'questionMark' ?
-                        (<span className="icon-question-mark">
-                        +{this.props.icons.questionMark}
-                      </span>)
-                        : ''
-                      }
-                    </div>
+                  <div className="icon-image" style={{'background-image': 'url(' + require(`../../img/${key}.png`) + ')'}}>
                     <button className="btn btn-minus" onClick={() => {
                       if (this.props.icons[key] > 0) {
                         this.setIcon(key, this.props.icons[key] - 1);
                       }
-                    }}>
-                      <i className="fa fa-minus"></i>
-                    </button>
+                    }}/>
+                    <button className="btn btn-plus" onClick={() => {
+                      this.setIcon(key, this.props.icons[key] + 1);
+                    }}/>
+                    <div className="icon-count">
+                      {this.props.icons[key]}
+                    </div>
+
+                    {this.props.icons.questionMark && key !== 'questionMark' ?
+                      (<span className="icon-question-mark">
+                        {this.props.icons[key] + this.props.icons.questionMark}
+                      </span>)
+                      : ''
+                    }
+
                   </div>
                 </div>
               </div>

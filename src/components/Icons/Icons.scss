@@ -1,40 +1,61 @@
 .icon-wrapper {
-  padding: 15px 5px;
+  padding: 5px;
   text-align: center;
 
   .icon {
     display: inline-block;
     width: 100px;
-    height: 50px;
+    height: 100px;
 
     .icon-image {
       display: inline-block;
-      width: 50px;
-      height: 50px;
+      width: 100px;
+      height: 100px;
       margin: 0;
-      vertical-align: top;
-    }
-
-    .icon-count-wrapper {
-      display: inline-block;
-      width: 45px;
-      height: 50px;
-      margin-left: 5px;
+      background-size: 100px 100px;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      color: white;
       position: relative;
       top: 0;
       left: 0;
 
-      .btn {
+      .icon-count {
         display: block;
+        height: 100px;
         width: 100%;
+        color: white;
+        text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+        line-height: 100px;
+        font-size: 70px;
+      }
+
+      .icon-question-mark {
+        font-size: 12px;
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: white;
+        width: 25px;
         height: 25px;
         color: black;
-        //text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+        line-height: 25px;
+        border-radius: 50%;
+      }
+
+      .btn {
+        display: block;
+        width: 50%;
+        height: 100px;
+        color: white;
         line-height: 10px;
-        font-size: 10px;
+        font-size: 50px;
         position: absolute;
         outline: none !important;
         padding: 0;
+        z-index: 50;
+        opacity: .5;
         &:focus,
         &:active {
           box-shadow: none !important;
@@ -43,29 +64,15 @@
         }
 
         &.btn-plus {
-          top: 0;
-          padding-bottom: 15px;
+          right: 0;
         }
 
         &.btn-minus {
-          bottom: 0;
-          padding-top: 15px;
+          left: 0;
         }
 
-      }
-
-      .icon-count {
-        display: block;
-        height: 50px;
-        color: black;
-        //text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-        line-height: 50px;
-        font-size: 20px;
-
-        .icon-question-mark {
-          font-size: 18px;
-        }
       }
     }
+
   }
 }
