@@ -41,24 +41,17 @@ class Productions extends React.Component {
           <div className="col text-center">
             <div className="wrapper">
               <div className="icon-wrapper terraform-rate">
-                <img className="icon-image" src={require(`../../img/terraformRate.png`)} alt="terraformRate"/>
-              </div>
-              <div className="counter">
                 <button className="btn btn-plus" onClick={() => {
                   this.setTR(this.props.terraformRate + 1);
-                }}>
-                  <i className="fa fa-plus"></i>
-                </button>
-                <div className="value">
-                  {this.props.terraformRate}
-                </div>
+                }}/>
                 <button className="btn btn-minus" onClick={() => {
                   if (this.props.terraformRate > 0) {
                     this.setTR(this.props.terraformRate - 1);
                   }
-                }}>
-                  <i className="fa fa-minus"></i>
-                </button>
+                }}/>
+                <div className="icon-image" style={{'background-image': 'url(' + require(`../../img/terraformRate.png`) + ')'}}>
+                  {this.props.terraformRate}
+                </div>
               </div>
             </div>
           </div>
@@ -78,60 +71,34 @@ class Productions extends React.Component {
               <div className="col text-center">
                 <div className="wrapper">
                   <div className="icon-wrapper production">
-                    <img className="icon-image" src={require(`../../img/${key}.png`)} alt={key}/>
-                  </div>
-                  <div className="counter">
                     <button className="btn btn-plus" onClick={() => {
                       this.setProduction(key, this.props.productions[key] + 1);
-                    }}>
-                      <i className="fa fa-plus"></i>
-                    </button>
-                    <div className="value">
-                      {this.props.productions[key]}
-                    </div>
+                    }}/>
                     <button className="btn btn-minus" onClick={() => {
                       if (this.props.productions[key] > 0 || (key === 'megaCredit' && this.props.productions[key] > -5)) {
                         this.setProduction(key, this.props.productions[key] - 1);
                       }
-                    }}>
-                      <i className="fa fa-minus"></i>
-                    </button>
+                    }}/>
+                    <div className="icon-image" style={{'background-image': 'url(' + require(`../../img/${key}.png`) + ')'}}>
+                      {this.props.productions[key]}
+                    </div>
                   </div>
                 </div>
               </div>
               <div className="col text-center">
                 <div className="wrapper">
-                  <div className="icon-wrapper">
-                    <img className="icon-image" src={require(`../../img/${key}.png`)} alt={key}/>
-                  </div>
-                  <div className="counter">
-                    <button className="btn btn-plus resource amount-1" onClick={() => {
+                  <div className="icon-wrapper resource">
+                    <button className="btn btn-plus" onClick={() => {
                       this.setResource(key, this.props.resources[key] + 1);
-                    }}>
-                      <i className="fa fa-plus"></i>
-                    </button>
-                    <button className="btn btn-plus resource amount-5" onClick={() => {
-                      this.setResource(key, this.props.resources[key] + 5);
-                    }}>
-                      <i className="fa fa-plus"></i>5
-                    </button>
-                    <div className="value">
-                      {this.props.resources[key]}
-                    </div>
-                    <button className="btn btn-minus resource amount-1" onClick={() => {
+                    }}/>
+                    <button className="btn btn-minus" onClick={() => {
                       if (this.props.resources[key] > 0) {
                         this.setResource(key, this.props.resources[key] - 1);
                       }
-                    }}>
-                      <i className="fa fa-minus"></i>
-                    </button>
-                    <button className="btn btn-minus resource amount-5" onClick={() => {
-                      if (this.props.resources[key] - 5 >= 0) {
-                        this.setResource(key, this.props.resources[key] - 5);
-                      }
-                    }}>
-                      <i className="fa fa-minus"></i>5
-                    </button>
+                    }}/>
+                    <div className="icon-image" style={{'background-image': 'url(' + require(`../../img/${key}.png`) + ')'}}>
+                      {this.props.resources[key]}
+                    </div>
                   </div>
                 </div>
               </div>
