@@ -6,8 +6,6 @@ generation which could take some time. It also makes easier to track when you wi
 without your opponents gets suspicious about you watching the milestones and counting your cards.
 
 ## Future steps
-- Make it work on phones
-- Make it run without connection (PWA)
 - Add some tests
 
 ## Ideas to discuss
