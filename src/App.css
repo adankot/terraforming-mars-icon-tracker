@@ -1,65 +1,86 @@
 .App {
-  text-align: center;
-  width: 100vw;
+    text-align: center;
+    width: 100vw;
+}
+
+body {
+    background-image: url('./img/background.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .icons {
-  display: block;
-  width: 100%;
+    display: block;
+    width: 100%;
 }
 
 .icon {
-  display: inline-block;
-  width: 100px;
-  height: 100px;
-  background-size: cover;
-  background-repeat: no-repeat;
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .icon-container {
-  display: inline-block;
-  border: #000000 2px;
-  margin: 15px 0px;
-  height: 100px;
+    display: inline-block;
+    border: #000000 2px;
+    margin: 2px 2px;
+    padding: 5px;
+    height: 110px;
+    background: rgba(255, 255, 255, 0.3)
 }
 
 .button-container {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
 }
 
 .icon-count {
-  color: white;
-  font-size: 50px;
-  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
-  line-height: 90px;
-  font-weight: bold;
+    color: white;
+    font-size: 50px;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    line-height: 90px;
+    font-weight: bold;
+}
+
+.question-mark-counter {
+    color: white;
+    font-size: 12px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    line-height: 0px;
+    font-weight: bold;
+    vertical-align: super;
+    position: relative;
+    top: -20px;
 }
 
 .btn {
-  background-color: white;
-  border: none;
-  color: black;
-  padding: 30px 16px;
-  font-size: 40px;
-  cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: black;
+    padding: 30px 16px;
+    font-size: 40px;
+    cursor: pointer;
 }
 
-.reset-button-container{
-  display: block;
-  width: 100%;
-  padding: 20px 0;
+.reset-button-container {
+    display: block;
+    width: 100%;
+    padding: 20px 0;
 }
 
 .reset-button-container > button {
-  display: inline-block;
-  font-size: 16px;
-  padding: 15px;
-  color: white;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  background-color: firebrick;
+    display: inline-block;
+    font-size: 16px;
+    padding: 15px;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background-color: firebrick;
 }
 
